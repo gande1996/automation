@@ -76,6 +76,42 @@ public class FrontendLogin {
         WebElement element =driver.findElement(By.id("txtTrackNo"));
         element.sendKeys("id155001");
         
+
+
+          driver.get("https://cifbackend.boxonlogistics.com/Login.aspx#no-back");
+        driver.manage().window().maximize();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtusername")).sendKeys("guest");
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtpassword")).sendKeys("Cif2021@$#");
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnlogin")).click();
+        driver.findElement(By.xpath("//*[@id=\"aspnetForm\"]/section/div[2]/div[1]/div[1]/a[2]/b")).click();
+        driver.findElement(By.xpath("//*[@id=\"ctl00_divMenu\"]/ul/li[3]")).click();
+        driver.findElement(By.xpath("//*[@id=\"warehousereceipt\"]/a")).click();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnShowPrewarehouse")).click();
+        Thread.sleep(8000);
+        driver.findElement(By.linkText("WR-71420-PWR")).click();
+        Thread.sleep(10000);
+        Set<String> instancewindow= driver.getWindowHandles();
+        Iterator<String> it = instancewindow.iterator();
+        String parent =it.next();
+        String child =it.next();
+        driver.switchTo().window(child);
+        driver.findElement(By.xpath("//*[@id=\"BillFormTabs\"]/li[3]/a")).click();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtLength")).clear();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtWidth")).clear();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtHeight")).clear();
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtGrossWtPerItem")).clear();
+        Thread.sleep(3000);
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtLength")).sendKeys("5");
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtWidth")).sendKeys("5");
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtHeight")).sendKeys("5");
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtGrossWtPerItem")).sendKeys("10");
+        Thread.sleep(2000);
+        driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnCal")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("/html/body/form/section/div[2]/div[3]/div/div[2]/div[2]/div[3]/div/div/div[1]/ul/li[4]/a/span[2]")).click();
+        
+        
+
 	}
 
 }
