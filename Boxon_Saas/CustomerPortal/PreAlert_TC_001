@@ -1,0 +1,47 @@
+package com.ible.v271;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class PreAlert_TC_001 {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Akhil\\chromedriver_win32_112\\chromedriver.exe");
+		ChromeOptions co=new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+        driver.get("https://kenco.smarteweb.com");
+        driver.manage().window().maximize();
+        driver.findElement(By.id("unameTxt")).sendKeys("kenc1001");
+        driver.findElement(By.id("passwordTxt")).sendKeys("Boxon@123");
+        driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("/html/body/div[3]/section/main/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/a")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.id("mnameTxt")).sendKeys("Akhil");
+        driver.findElement(By.id("carrierTxt")).sendKeys("Amazon");
+        driver.findElement(By.id("carriertrackingTxt")).sendKeys("Amazon100");
+        driver.findElement(By.xpath("//*[@id=\"orderdateTxt\"]")).click();
+        driver.findElement(By.xpath("/html/body/div[4]/table/tbody/tr[3]/td[1]/a")).click();
+        driver.findElement(By.id("country3Txt")).sendKeys("AUSTRALIA");
+		driver.findElement(By.id("1")).sendKeys("Mobile");
+		driver.findElement(By.id("2")).sendKeys("2");
+		driver.findElement(By.id("3")).sendKeys("200");
+		driver.findElement(By.id("rmavalue_1")).sendKeys("RMA01");
+		driver.findElement(By.id("orderidTxt_1")).sendKeys("OD001");
+        driver.findElement(By.xpath("//*[@id=\"addinvoiceTxtMul_1\"]")).sendKeys("C:\\Users\\Sasi\\Desktop\\Screenshot (13).png");
+        driver.findElement(By.id("lengthTxt_1")).sendKeys("10");
+        driver.findElement(By.id("widthTxt_1")).sendKeys("10");
+        driver.findElement(By.id("heightTxt_1")).sendKeys("10");
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[7]/div/div/input[2]")).click();
+
+		
+		
+		
+	}
+
+}
