@@ -1,0 +1,33 @@
+package com.ible.v271;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class ConvertPwrToWr_TC001 {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Akhil\\chromedriver_win32_112\\chromedriver.exe");
+		ChromeOptions co=new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+        driver.get("https://manage.smarteweb.com/");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtusername")).sendKeys("Kenco");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtpassword")).sendKeys("Boxon@123");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_btnlogin\"]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"aspnetForm\"]/section/div[2]/div[1]/a/b")).click();
+		driver.findElement(By.xpath("//*[@id=\"ctl00_divMenu\"]/ul/li[3]/a/span")).click();
+		driver.findElement(By.xpath("//*[@id=\"warehousereceipt\"]")).click();
+		
+		Thread.sleep(1000);
+		driver.quit();
+		
+		
+	}
+
+}
