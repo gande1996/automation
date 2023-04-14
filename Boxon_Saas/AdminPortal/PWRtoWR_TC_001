@@ -1,14 +1,15 @@
 package com.ible.v271;
-
+import java.util.Iterator;
+import java.util.Set;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
 public class ConvertPwrToWr_TC001 {
-
-	public static void main(String[] args) throws InterruptedException {
-
+	public static void main(String[] args) throws InterruptedException 
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Akhil\\chromedriver_win32_112\\chromedriver.exe");
 		ChromeOptions co=new ChromeOptions();
 		co.addArguments("--remote-allow-origins=*");
@@ -23,11 +24,46 @@ public class ConvertPwrToWr_TC001 {
 		driver.findElement(By.xpath("//*[@id=\"aspnetForm\"]/section/div[2]/div[1]/a/b")).click();
 		driver.findElement(By.xpath("//*[@id=\"ctl00_divMenu\"]/ul/li[3]/a/span")).click();
 		driver.findElement(By.xpath("//*[@id=\"warehousereceipt\"]")).click();
-		
-		Thread.sleep(1000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnShowPrewarehouse")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvBillformInfo_cell0_1_lnkItem")).click();
+		Thread.sleep(3000);
+		Set<String> instancewindow=driver.getWindowHandles();
+		Iterator <String> it=instancewindow.iterator();
+		String parent=it.next();
+		String child=it.next();
+		driver.switchTo().window(child);
+		driver.findElement(By.xpath("/html/body/form/section/div[2]/div[3]/div/div[2]/div/div[4]/div[1]/div/div/div[1]/ul/li[3]/a/span[1]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_ddlratetype")).sendKeys("FORMULA");
+		Thread.sleep(3000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtLength")).clear();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtWidth")).clear();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtHeight")).clear();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtGrossWtPerItem")).clear();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtLength")).sendKeys("5");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtWidth")).sendKeys("5");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtHeight")).sendKeys("5");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtGrossWtPerItem")).sendKeys("10");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_GrdMeasurement_ctl02_txtGrossWt")).click();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnCal")).click();	
+		Actions a=new Actions(driver);
+		a.sendKeys(Keys.PAGE_DOWN).build().perform();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("/html/body/form/section/div[2]/div[3]/div/div[2]/div/div[4]/div[1]/div/div/div[1]/ul/li[4]/a/span[1]")).click();
+		Thread.sleep(2000);
+		Select dp1 =new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvInventoryItem_ctl02_ddlwhse")));
+		dp1.selectByVisibleText("IN-WR");
+		Thread.sleep(4000);
+		Select dp2 = new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvInventoryItem_ctl02_ddlZoneId")));
+		dp2.selectByVisibleText("IN-ZN");
+		Thread.sleep(3000);
+		Actions a2=new Actions(driver);
+		a.sendKeys(Keys.PAGE_DOWN).build().perform();
+		driver.findElement(By.xpath("/html/body/form/section/div[2]/div[3]/div/div[2]/div/div[4]/div[2]/input[1]")).click();
+		driver.switchTo().window(parent);
 		driver.quit();
-		
-		
 	}
 
 }
