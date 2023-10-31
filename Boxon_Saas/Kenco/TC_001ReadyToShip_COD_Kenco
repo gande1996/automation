@@ -1,0 +1,42 @@
+package com.ible.kenco.stage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+
+public class TC_001ReadyToShip_COD_Kenco {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.get("https://kenco.smarteweb.com/");
+		driver.findElement(By.id("unameTxt")).sendKeys("Ken1002");
+		driver.findElement(By.id("passwordTxt")).sendKeys("Boxon@123");
+		driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
+		Thread.sleep(2000);
+//		driver.findElement(By.xpath("//*[@id=\"notificationModal\"]/div/div/div[3]/button")).click();
+		driver.findElement(By.xpath("/html/body/div[3]/section/main/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[2]/div/a")).click();
+//		driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[2]/div/a")).click();
+		Thread.sleep(3000);
+		driver.findElement( By.xpath("//*[@id=\"j_table\"]/tbody/tr[1]/td[1]/input")).click();
+		driver.findElement(By.xpath("//*[@id=\"tabs2\"]/div[9]/div[2]/div/input[1]")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//*[@id=\"getServiceTypeDiv\"]/div/div/input")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.id("shipmentNewStr")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.name("specialinstructionStr")).sendKeys("AkhilCODPY");
+		Thread.sleep(3000);
+		driver.findElement(By.id("goto_payment_scr")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"step3\"]/div/div/div/div[8]/div/div/input")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("/html/body/div[3]/section/main/div/div[13]/div/div/div[4]/form/div[2]/div/div/div/div[14]/div/input[7]")).click();
+		
+	}
+
+}
