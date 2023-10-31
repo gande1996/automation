@@ -1,0 +1,90 @@
+package com.ible.kenco.stage;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+public class TC_001CreatePrealertAndConvertPWRTOWRinQuickactions {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("https://kenco.smarteweb.com/");
+		driver.findElement(By.id("unameTxt")).sendKeys("ken1002");
+		driver.findElement(By.id("passwordTxt")).sendKeys("Boxon@123");
+		driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
+		Thread.sleep(3000);
+//		driver.findElement(By.xpath("//*[@id=\"notificationModal\"]/div/div/div[3]/button")).click();
+		driver.findElement(By.xpath("/html/body/div[3]/section/main/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/a")).click();
+//		driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/a")).click();
+		driver.findElement(By.id("mnameTxt")).sendKeys("Akhil");
+		driver.findElement(By.id("carrierTxt")).sendKeys("kenco");
+		driver.findElement(By.id("carriertrackingTxt")).sendKeys("MST019");
+		driver.findElement(By.id("orderdateTxt")).click();
+		driver.findElement(By.xpath("/html/body/div[4]/table/tbody/tr[5]/td[3]/a")).click();
+		driver.findElement(By.id("1")).sendKeys("Iphone 14 plus");
+		driver.findElement(By.id("2")).sendKeys("1");
+		driver.findElement(By.id("3")).sendKeys("10");
+		driver.findElement(By.id("rmavalue_1")).sendKeys("10");
+		driver.findElement(By.id("orderidTxt_1")).sendKeys("10");
+		driver.findElement(By.xpath("//*[@id=\"addinvoiceTxtMul_1\"]")).sendKeys("C:\\Users\\Sasi\\Desktop\\Screenshot (13).png");
+//		driver.findElement(By.id("lengthTxt_1")).sendKeys("2");
+//		driver.findElement(By.id("widthTxt_1")).sendKeys("2");
+//		driver.findElement(By.id("heightTxt_1")).sendKeys("2");
+		driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[7]/div/div/input[2]")).click();
+		
+//		Backend
+		driver.get("https://manage.smarteweb.com/");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtusername")).sendKeys("kenco");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtpassword")).sendKeys("Boxon@123");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnlogin")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_lnkQuickActions")).click();
+		driver.findElement(By.xpath("//*[@id=\"ctl00_divBill\"]/div/b")).click();
+		driver.switchTo().frame("ctl00_ASPxPopupControl1_CIF-1");	
+		driver.findElement(By.id("txtTrackNo")).sendKeys("MST019");
+		driver.findElement(By.id("txtmerchantname")).click();
+		Select dp1 = new Select(driver.findElement(By.id("ddlPriority")));
+		dp1.selectByVisibleText("Standard");
+		Thread.sleep(2000);
+		Select dp2=new Select(driver.findElement(By.id("ddlServiceName")));
+		dp2.selectByVisibleText("ES-US-GROUND-STD-CTSRV");
+		Thread.sleep(3000);
+//		Select dp4 = new Select(driver.findElement(By.id("gdvRoute_ctl03_ddlAddServs")));
+//		dp4.selectByVisibleText("AKG GST");
+//		Thread.sleep(3000);
+//		Select dp3=new Select(driver.findElement(By.id("GrdMeasurement_ctl02_ddlratetype")));
+//		dp3.selectByVisibleText("GROSSWEIGHT");
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtGrossWtPerItem")).clear();
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtGrossWtPerItem")).sendKeys("1");
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtLength")).clear();
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtLength")).sendKeys("1");
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtWidth")).clear();
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtWidth")).sendKeys("1");
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtHeight")).clear();
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtHeight")).sendKeys("1");
+		driver.findElement(By.id("btnCal")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("btnaddandnew")).click();
+		Thread.sleep(4000);
+		Set<String> instancewindow= driver.getWindowHandles();
+        Iterator<String> it = instancewindow.iterator();
+        String parent =it.next();
+        String child = it.next();
+        driver.switchTo().window(child);
+        driver.close();
+        driver.switchTo().window(parent);
+        driver.navigate().refresh();
+        driver.quit();
+	}
+
+}
+	
