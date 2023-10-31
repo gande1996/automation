@@ -1,0 +1,48 @@
+package com.ible.kenco.stage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.support.ui.Select;
+
+public class CreatePrealert {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		
+//		@BeforeTest	
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Akhil\\chromedriver_win32_112\\chromedriver.exe");
+		ChromeOptions co=new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+        driver.get("https://kenco.smarteweb.com");
+        driver.manage().window().maximize();
+        Thread.sleep(2000);
+        driver.findElement(By.id("unameTxt")).sendKeys("Kenc1061");
+        driver.findElement(By.id("passwordTxt")).sendKeys("Test@123");
+        driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
+        Thread.sleep(2000);
+        driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/a")).click();
+        driver.findElement(By.id("mnameTxt")).sendKeys("MMM");
+        driver.findElement(By.id("carrierTxt")).sendKeys("Amazon");
+        driver.findElement(By.id("carriertrackingTxt")).sendKeys("MMM001");
+        driver.findElement(By.xpath("//*[@id=\"orderdateTxt\"]")).click();
+        driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[2]/a")).click();
+        Select dp1=new Select(driver.findElement(By.id("country3Txt")));
+        dp1.selectByVisibleText("AUSTRALIA");
+        driver.findElement(By.id("1")).sendKeys("Mythri");
+        driver.findElement(By.id("2")).sendKeys("2");
+        driver.findElement(By.id("3")).sendKeys("250");
+        driver.findElement(By.id("rmavalue_1")).sendKeys("RMA0001");
+        driver.findElement(By.id("orderidTxt_1")).sendKeys("OrderID0002");
+        driver.findElement(By.id("addinvoiceTxtMul_1")).sendKeys("C:\\Users\\Sasi\\Desktop\\Screenshot (13).png");
+        driver.findElement(By.id("lengthTxt_1")).sendKeys("10");
+        driver.findElement(By.id("widthTxt_1")).sendKeys("10");
+        driver.findElement(By.id("heightTxt_1")).sendKeys("10");
+        driver.findElement(By.xpath("//*[@id=\"userprofileFormOne\"]/div[7]/div/div/input[2]")).click();
+        Thread.sleep(2000);
+        driver.quit();
+	}
+
+}

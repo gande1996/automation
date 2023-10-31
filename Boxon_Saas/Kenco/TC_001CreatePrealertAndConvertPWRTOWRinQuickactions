@@ -27,7 +27,7 @@ public class TC_001CreatePrealertAndConvertPWRTOWRinQuickactions {
 //		driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div[2]/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/a")).click();
 		driver.findElement(By.id("mnameTxt")).sendKeys("Akhil");
 		driver.findElement(By.id("carrierTxt")).sendKeys("kenco");
-		driver.findElement(By.id("carriertrackingTxt")).sendKeys("MST019");
+		driver.findElement(By.id("carriertrackingTxt")).sendKeys("MST018");
 		driver.findElement(By.id("orderdateTxt")).click();
 		driver.findElement(By.xpath("/html/body/div[4]/table/tbody/tr[5]/td[3]/a")).click();
 		driver.findElement(By.id("1")).sendKeys("Iphone 14 plus");
@@ -50,7 +50,7 @@ public class TC_001CreatePrealertAndConvertPWRTOWRinQuickactions {
 		driver.findElement(By.id("ctl00_lnkQuickActions")).click();
 		driver.findElement(By.xpath("//*[@id=\"ctl00_divBill\"]/div/b")).click();
 		driver.switchTo().frame("ctl00_ASPxPopupControl1_CIF-1");	
-		driver.findElement(By.id("txtTrackNo")).sendKeys("MST019");
+		driver.findElement(By.id("txtTrackNo")).sendKeys("MST018");
 		driver.findElement(By.id("txtmerchantname")).click();
 		Select dp1 = new Select(driver.findElement(By.id("ddlPriority")));
 		dp1.selectByVisibleText("Standard");
