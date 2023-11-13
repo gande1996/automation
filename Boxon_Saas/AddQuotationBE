@@ -1,0 +1,82 @@
+package com.ible.pelham;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class TC_001CreateQuotationBE {
+
+	public static void main(String[] args) throws InterruptedException {
+		ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("http://qbtest.justfordemo.biz/Login.aspx");
+		driver.findElement(By.id("txtusername")).sendKeys("guest");
+		driver.findElement(By.id("txtpassword")).sendKeys("pelham");
+		driver.findElement(By.id("btnlogin")).click();
+		WebElement mainmenu=driver.findElement(By.xpath("//*[@id=\"ctl00_divMenu\"]/ol/li[1]/a"));
+		Actions act=new Actions(driver);
+		act.moveToElement(mainmenu).perform();
+		Thread.sleep(2000);
+		WebElement submenu=driver.findElement(By.xpath("//*[@id=\"quotation\"]/a"));
+		Actions act2=new Actions(driver);
+		act2.moveToElement(submenu);
+		act2.click().build().perform();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_imgbtnAddQuotation")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_Tab1_txtValidUpto")).click();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_Tab1_rateValidCal_day_2_6")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_Tab1_rdbStatus_1")).click();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_Tab1_txtCustId")).sendKeys("PS-712493-2023");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"divCustId\"]/div")).click();
+		Thread.sleep(7000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_Tab1_txtItemDesc")).sendKeys("Test");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_Tab1_chkConsigneeAddress")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"__tab_ctl00_ContentPlaceHolder1_Tabs_tbEntities\"]")).click();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbEntities_chkShipperSameAsCust")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbEntities_chkDelSameAsCust")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"__tab_ctl00_ContentPlaceHolder1_Tabs_tbPnlRates\"]")).click();
+		Thread.sleep(2000);
+		Select dd1 = new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbPnlRates_ddlPriority")));
+		dd1.selectByValue("Gstandard");
+		Thread.sleep(5000);
+		Select dd2 = new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbPnlRates_ddlService")));
+		dd2.selectByVisibleText("Division# 1 to MCO-A");
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//*[@id=\"__tab_ctl00_ContentPlaceHolder1_Tabs_tbPnlItem\"]")).click();
+		Thread.sleep(2000);
+		Select dd3=new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbPnlItem_gdvItem_ctl02_ddlratetype")));
+		dd3.selectByVisibleText("Hundred Weight");
+		Thread.sleep(2000);
+		Select dd4 = new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbPnlItem_gdvItem_ctl02_ddlItem")));
+		dd4.selectByVisibleText("GENERAL MERCHANDISE");
+		Thread.sleep(5000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbPnlItem_gdvItem_ctl02_txtInotes")).sendKeys("Iphone 14 plus");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbPnlItem_gdvItem_ctl02_txtQuanity")).sendKeys("2");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbPnlItem_gdvItem_ctl02_txtGrossWtPerItem")).sendKeys("5");
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbPnlItem_btnCal")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//*[@id=\"__tab_ctl00_ContentPlaceHolder1_Tabs_tbpnlStagingDetails\"]")).click();
+		Thread.sleep(2000);
+		Select dd5=new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_Tabs_tbpnlStagingDetails_gdvAddServ_ctl02_ddlAddServs")));
+		dd5.selectByVisibleText("Document Fee");
+		Thread.sleep(5000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnAdd")).click();
+		
+		
+	}
+
+}

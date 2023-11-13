@@ -1,0 +1,78 @@
+package com.infoscience.etyme;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class TC_001CreateJOB {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("https://wisnick.etyme.com/");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("/html/body/section[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div[1]/div[1]/button")).click();
+		driver.findElement(By.xpath("/html/body/section[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div[1]/div[1]/div/a[1]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("user_email")).sendKeys("hetif77455@wisnick.com");
+		driver.findElement(By.id("user_password")).sendKeys("Akhil@1012");
+		Thread.sleep(2000);
+		driver.findElement(By.name("commit")).click();
+		driver.findElement(By.xpath("/html/body/section[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div[3]/button/span")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("/html/body/section[2]/div/div/div[1]/div/div/div/div[2]/div[2]/div[3]/div/a[2]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"dashboard_cards\"]/div[1]/div[1]/a/div[2]")).click();
+		driver.findElement(By.xpath("//*[@id=\"main\"]/div[3]/div/div/div/div/div/div[1]/div/div[1]/a[3]")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("job_title")).sendKeys("Performance Tester");
+		driver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/form/trix-editor")).sendKeys("Primary responsibilities:\r\n"+ "• Well-versed and hands-on with end-to-end Performance Testing life-cycle activities, ranging from requirement gathering, test strategy, test plans, risk assessment, estimation, workload modeling, live monitoring, bug logging & tracking, bottleneck analyses, and reporting (scripting, execution, and reporting)"+ "• Expertise in performance testing with Open Source tools like JMeter."+ "• Experienced in working on Azure cloud environment with .NET stack.\r\n");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/form/div[2]/div[1]/div/div[1]/input")).sendKeys("Engineering");
+		Select dd1=new Select(driver.findElement(By.id("job_status")));
+		dd1.selectByVisibleText("Published");
+		Thread.sleep(2000);
+		Select dd2=new Select(driver.findElement(By.id("job_department")));
+		dd2.selectByVisibleText("IT - Services & Product Development");
+		Thread.sleep(2000);
+		Select dd3=new Select(driver.findElement(By.id("job_industry")));
+		dd3.selectByVisibleText("Banking, Investment Services & Insurance");
+		Select dd4 =new  Select(driver.findElement(By.id("job_job_category")));
+		dd4.selectByVisibleText("IT & Networking");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"main\"]/div[2]/div/div/form/div[4]/div[2]/div/div[1]/input")).sendKeys("Testing,"+"Mobile testing,"+" Api Testing,");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"google_search_location\"]")).sendKeys("Hyderabad	");
+		Thread.sleep(2000);
+//		driver.findElement(By.xpath("/html/body/div[8]/div/table/tr/td[2]/button")).click();
+//		Thread.sleep(2000);
+		Select dd5=new Select(driver.findElement(By.id("job_work_type")));
+		dd5.selectByVisibleText("Hybrid");
+		Thread.sleep(2000);
+		driver.findElement(By.id("job_start_date")).click();
+		driver.findElement(By.xpath("/html/body/div[6]/table/tbody/tr[2]/td[5]/a")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("job_end_date")).click();
+		driver.findElement(By.xpath("/html/body/div[6]/table/tbody/tr[5]/td[5]/a")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("job_price")).sendKeys("20");
+		Thread.sleep(2000);
+		Select dd6=new Select(driver.findElement(By.id("job_job_type")));
+		dd6.selectByVisibleText("Full Time");
+		driver.findElement(By.id("job_source")).sendKeys("Automation");
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[2]/div/div/form/div[13]/input")).click();
+		Thread.sleep(5000);
+		driver.close();
+	}
+
+}
+
