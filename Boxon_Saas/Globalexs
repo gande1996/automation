@@ -1,0 +1,111 @@
+
+Create Prealert 
+
+ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("https://globalexs.smarteweb.com/");
+		driver.findElement(By.id("unameTxt")).sendKeys("Box1571");
+		driver.findElement(By.id("passwordTxt")).sendKeys("Boxon@123");
+		driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
+		driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/a")).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		driver.findElement(By.name("mnameTxt")).sendKeys("Akhil");
+		driver.findElement(By.name("carrierTxt")).sendKeys("Ekart");
+		driver.findElement(By.id("carriertrackingTxt")).sendKeys("Task022");
+		driver.findElement(By.id("orderdateTxt")).click();
+//		driver.findElement(By.xpath("/html/body/div[4]/table/tbody/tr[4]/td[4]")).click();
+		driver.findElement(By.xpath("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[2]/td[4]/a")).click();
+		driver.findElement(By.id("1")).sendKeys("Iphone");
+		driver.findElement(By.id("2")).sendKeys("1");
+		driver.findElement(By.id("3")).sendKeys("20");
+		driver.findElement(By.xpath("//*[@id=\"addinvoiceTxtMul_1\"]")).sendKeys("C:\\Users\\akhil\\OneDrive\\Documents\\file_example_JPG_500kB.jpg");
+		driver.findElement(By.name("btnSubmit")).click();
+		
+
+
+===============================================================================================================================================================================
+
+
+  Convert Pwr to WR
+
+ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.get("https://manage.smarteweb.com/");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtusername")).sendKeys("gabi");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtpassword")).sendKeys("Boxon@123");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnlogin")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_lnkQuickActions")).click();
+		driver.findElement(By.id("ctl00_lnkBILL")).click();
+		Thread.sleep(2000);
+		driver.switchTo().frame("ctl00_ASPxPopupControl1_CIF-1");
+		Thread.sleep(2000);
+		driver.findElement(By.id("txtTrackNo")).sendKeys("Task022");	
+		Thread.sleep(2000);
+		driver.findElement(By.id("txtmerchantname")).click();
+		Thread.sleep(5000);
+		Select dd1=new Select(driver.findElement(By.id("GrdMeasurement_ctl02_ddlStatus")));
+		dd1.selectByVisibleText("Arribo Barcelona");
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtLength")).clear();
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtLength")).sendKeys("1");
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtWidth")).clear();
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtWidth")).sendKeys("1");
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtHeight")).clear();
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtHeight")).sendKeys("1");
+		driver.findElement(By.id("GrdMeasurement_ctl02_txtGrossWtPerItem")).sendKeys("2");
+		Thread.sleep(2000);
+		driver.findElement(By.id("btnCal")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.id("btnaddandnew")).click();
+		Thread.sleep(2000);
+		Set<String> instancewindow= driver.getWindowHandles();
+        Iterator<String> it = instancewindow.iterator();
+        String parent =it.next();
+        String child = it.next();
+        driver.switchTo().window(child);
+        driver.close();
+        driver.switchTo().window(parent);
+        driver.navigate().refresh();
+
+
+
+
+=======================================================================================================================================================================
+
+
+  Ready to shipment with COD
+
+ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.get("https://globalexs.smarteweb.com/");
+		driver.findElement(By.id("unameTxt")).sendKeys("Box1571");
+		driver.findElement( By.id("passwordTxt")).sendKeys("Boxon@123");
+		driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[2]/div/a")).click();
+		Thread.sleep(3000);
+		driver.findElement( By.xpath("//*[@id=\"j_table\"]/tbody/tr[1]/td[1]/input")).click();
+		driver.findElement(By.xpath("//*[@id=\"tabs2\"]/div[9]/div[2]/div/input[1]")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//*[@id=\"getServiceTypeDiv\"]/div/div/input")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.id("shipmentNewStr")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.name("specialinstructionStr")).sendKeys("AkhilCODPY");
+		Thread.sleep(3000);
+		driver.findElement(By.id("goto_payment_scr")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"step3\"]/div/div/div/div[8]/div/div/input[1]")).click();
+		driver.findElement(By.xpath("//*[@id=\"step3\"]/div/div/div/div[14]/div/input[7]")).click();
+		driver.close();
+
+
+=========================================================================================================================================================================
