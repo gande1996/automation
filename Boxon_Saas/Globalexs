@@ -149,3 +149,31 @@ ChromeOptions co=new  ChromeOptions();
 
 ===========================================================================================================================================================================
 
+
+
+prealert 
+
+
+ 		ChromeOptions co = new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("https://globalexs.smarteweb.com/");
+		driver.findElement(By.id("unameTxt")).sendKeys("Box1416");
+		driver.findElement(By.id("passwordTxt")).sendKeys("jejji@123");
+		driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
+		driver.findElement(By
+				.xpath("//*[@id=\"content\"]/div/div[2]/div/div[2]/div/div[2]/div[1]/div/div/div[2]/div/div[1]/div/a"))
+				.click();
+		driver.findElement(By.name("mnameTxt")).sendKeys("Akhil");
+		driver.findElement(By.name("carrierTxt")).sendKeys("Ekart");
+		driver.findElement(By.id("carriertrackingTxt")).sendKeys("RAM225");
+		driver.findElement(By.id("1")).sendKeys("Iphone");
+		driver.findElement(By.id("2")).sendKeys("1");
+		driver.findElement(By.id("3")).sendKeys("20");
+		driver.findElement(By.xpath("//*[@id=\"addinvoiceTxtMul_1\"]"))
+				.sendKeys("C:\\Users\\Sasi\\Desktop\\Screenshot (13).png");
+		Thread.sleep(2);
+		driver.findElement(By.name("btnSubmit")).click();
+======================================================================================================================================================================================================================
