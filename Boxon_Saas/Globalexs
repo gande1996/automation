@@ -264,4 +264,88 @@ public class Test54 {
 
 }
 =================================================================================================================================================================
+
+
+ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("https://manage.smarteweb.com/");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtusername")).sendKeys("gabi");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtpassword")).sendKeys("Boxon@123");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnlogin")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_lnkQuickActions")).click();
+		driver.findElement(By.id("ctl00_lnkBILL")).click();
+		Thread.sleep(2000);
+		driver.switchTo().frame("ctl00_ASPxPopupControl1_CIF-1");
+		Thread.sleep(2000);
+//		List<String> trackingid=Arrays.asList("Ram165","Ram166","Ram167","Ram168","Ram169","Ram170");
+		String []trackingid= {"Ram165","Ram166","Ram167","Ram168","Ram169","Ram170"};
+		WebElement searchbar=driver.findElement(By.id("txtTrackNo"));
+		Thread.sleep(5000);
+		for (int i = 0; i < trackingid.length; i++) {
+			String string = trackingid[i];
+		}
+        for(String trackingids : trackingid) {
+        	searchbar.clear();
+			searchbar.sendKeys(trackingids);
+//			searchbar.sendKeys(Keys.RETURN);
+			System.out.println(trackingids);
+        }
+				if( driver.findElements(By.xpath("//*[@id=\"lblFinalCost\"]	")).equals("0")){
+					System.out.println("Please enter Grossweight");
+					driver.findElement(By.id("txtmerchantname")).click();
+	        		JavascriptExecutor js=(JavascriptExecutor)driver;
+	        		js.executeScript("window.scrollBy(0,650)","");
+//	        		driver.findElement(By.id("txtmerchantname")).click();
+	        		Thread.sleep(5000);
+	        		Select dd1=new Select(driver.findElement(By.id("GrdMeasurement_ctl02_ddlStatus")));
+	        		dd1.selectByVisibleText("Arribo Barcelona");
+	        		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+	        		driver.findElement(By.id("GrdMeasurement_ctl02_txtLength")).clear();
+	        		driver.findElement(By.id("GrdMeasurement_ctl02_txtLength")).sendKeys("1");
+	        		driver.findElement(By.id("GrdMeasurement_ctl02_txtWidth")).clear();
+	        		driver.findElement(By.id("GrdMeasurement_ctl02_txtWidth")).sendKeys("1");
+	        		driver.findElement(By.id("GrdMeasurement_ctl02_txtHeight")).clear();
+	        		driver.findElement(By.id("GrdMeasurement_ctl02_txtHeight")).sendKeys("1");
+	        		driver.findElement(By.id("GrdMeasurement_ctl02_txtGrossWtPerItem")).clear();
+	        		driver.findElement(By.id("GrdMeasurement_ctl02_txtGrossWtPerItem")).sendKeys("2");
+	        		Thread.sleep(2000);
+	        		driver.findElement(By.id("btnCal")).click();
+	        		Thread.sleep(5000);
+	        		driver.findElement(By.id("btnsave")).click();
+	        		Thread.sleep(2000);
+	        		Set<String> instancewindow= driver.getWindowHandles();
+	                Iterator<String> it = instancewindow.iterator();
+	                String parent =it.next();
+	                String child = it.next();
+	                driver.switchTo().window(child);
+	                driver.close();
+	                driver.switchTo().window(parent);
+	                driver.findElement(By.id("ctl00_ASPxPopupControl1_HRB-1")).click();
+			}
+    		}
+        		
+//        	}else if(driver.findElements(By.id("GrdMeasurement_ctl02_txtGrossWtPerItem")).size()>0){
+//        	if (driver.findElements(By.id("GrdMeasurement_ctl02_txtGrossWtPerItem")).size()>0){
+//        		System.out.println("Please enter Grossweight");
+//        	}else if(driver.findElements(By.id("GrdMeasurement_ctl02_txtGrossWtPerItem")).size()>0){
+        		
+        
+	}
+//                driver.switchTo().frame("pnlOuterMail");
+//                driver.findElement(By.id("btnsendactualmail")).click();
+//                driver.navigate().refresh();
+//                driver.findElement(By.id("ctl00_lnkQuickActions")).click();
+//        		driver.findElement(By.id("ctl00_lnkBILL")).click();
+//        		Thread.sleep(2000);
+//        		driver.switchTo().frame("ctl00_ASPxPopupControl1_CIF-1");
+        	
+		
+
+
+//	}
+	
 	
