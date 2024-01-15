@@ -342,10 +342,77 @@ ChromeOptions co=new  ChromeOptions();
 //        		driver.findElement(By.id("ctl00_lnkBILL")).click();
 //        		Thread.sleep(2000);
 //        		driver.switchTo().frame("ctl00_ASPxPopupControl1_CIF-1");
-        	
-		
 
 
-//	}
-	
-	
+
+======================================================================================================================================================================
+
+TC_001 Create Quotation
+
+ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.get("https://manage.smarteweb.com/");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtusername")).sendKeys("iblesoft");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtpassword")).sendKeys("Boxon@123");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnlogin")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"aspnetForm\"]/section/div[2]/div[1]/a/b")).click();
+		driver.findElement(By.xpath("//*[@id=\"ctl00_divMenu\"]/ul/li[2]/a/b")).click();
+		driver.findElement(By.id("quotation")).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_imgbtnAddQuotation")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtValidUpto")).click();
+		driver.findElement(By.id("Calendar1_day_4_3")).click();
+		Thread.sleep(3000);
+		WebElement custid=driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtCustId"));
+		custid.click();
+		Actions act = new Actions(driver);
+		WebElement custid1=driver.findElement(By.xpath("//*[@id=\"ctl00_ContentPlaceHolder1_txtCustId\"]"));
+		act.sendKeys("iblec1034").click().perform();
+		Thread.sleep(5000);
+		JavascriptExecutor js=(JavascriptExecutor) driver;
+		js.executeScript("window.scrollBy(0,300)", "");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtItemDesc")).sendKeys("iblec1034");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_chkConsigneeAddress")).click();
+		driver.findElement(By.xpath("//*[@id=\"quotation\"]/li[2]/a")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_chkShipperSameAsCust")).click();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_chkDelSameAsCust")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"quotation\"]/li[3]/a")).click();
+		Thread.sleep(2000);
+		Select dd3= new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_ddlService")));
+		dd3.selectByVisibleText("UAS-AUS");
+		Thread.sleep(5000);
+		driver.findElement(By.xpath("//*[@id=\"quotation\"]/li[4]/a")).click();
+		Thread.sleep(2000);
+		Select dd4 = new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_ddlratetype")));
+		dd4.selectByVisibleText("GROSSWEIGHT");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtItemName")).sendKeys("iphone10");
+		Select dd5= new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_ddlPackage")));
+		dd5.selectByVisibleText("box");
+		Thread.sleep(3000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtQuanity")).clear();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtQuanity")).sendKeys("3");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtLength")).clear();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtLength")).sendKeys("3");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtWidth")).clear();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtWidth")).sendKeys("3");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtHeight")).clear();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtHeight")).sendKeys("3");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvItem_ctl02_txtGrossWtPerItem")).sendKeys("2");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnCal")).click();	
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"quotation\"]/li[5]/a")).click();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvRoute_ctl02_btnAddG")).click();
+		Select dd6=new Select(driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvRoute_ctl03_ddlAddServs")));
+		dd6.selectByVisibleText("Loading charges");
+		Thread.sleep(3000);
+		JavascriptExecutor js2=(JavascriptExecutor) driver;
+		js2.executeScript("window.scrollBy(0,300)", "");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnsave")).click();
+		Thread.sleep(15000);
+		driver.close();
