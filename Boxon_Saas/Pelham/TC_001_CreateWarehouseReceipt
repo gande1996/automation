@@ -1,0 +1,23 @@
+
+		ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("http://pelhambackend.justfordemo.biz");
+		driver.findElement(By.id("txtusername")).sendKeys("guest");
+		driver.findElement(By.id("txtpassword")).sendKeys("pelham");
+		driver.findElement(By.id("btnlogin")).click();
+		WebElement mainmenu=driver.findElement(By.xpath("//*[@id=\"ctl00_divMenu\"]/ol/li[2]/a"));
+		Actions act=new Actions(driver);
+		act.moveToElement(mainmenu).perform();
+		Thread.sleep(2000);
+		WebElement submenu=driver.findElement(By.xpath("//*[@id=\"warehouse receipt\"]/a"));
+		Actions act2=new Actions(driver);
+		act2.moveToElement(submenu);
+		act2.click().build().perform();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_imgAddAdditonalUsers1")).click();
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+		Thread.sleep(3000);
+		driver.findElement(By.id("Tabs_tblpnlGeneral_txtReferenceNumBill")).sendKeys("Amazon41");
