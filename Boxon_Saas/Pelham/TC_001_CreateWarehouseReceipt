@@ -1,5 +1,4 @@
-
-		ChromeOptions co=new  ChromeOptions();
+  		ChromeOptions co=new  ChromeOptions();
 		co.addArguments("--remote-allow-origins=*");
 		WebDriver driver = new ChromeDriver(co);
 		driver.manage().window().maximize();
@@ -21,3 +20,22 @@
 		driver.switchTo().window(tabs.get(1));
 		Thread.sleep(3000);
 		driver.findElement(By.id("Tabs_tblpnlGeneral_txtReferenceNumBill")).sendKeys("Amazon41");
+		WebElement custid=driver.findElement(By.id("Tabs_tblpnlGeneral_txtCustomerID_I"));
+		custid.click();
+		Thread.sleep(2000);
+		WebElement custname1=driver.findElement(By.xpath("//*[@id=\"Tabs_tblpnlGeneral_txtCustomerID_I\"]"));
+		Actions act3= new Actions(driver);
+		act3.sendKeys("PS-712553-2024");
+		act3.click().perform();
+		Thread.sleep(15000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tblpnlGeneral_chbAdCust\"]")).click();
+		Thread.sleep(15000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tblpnlGeneral_chkSameShipp\"]")).click();
+		Thread.sleep(15000);
+		Select dd=new Select(driver.findElement(By.id("Tabs_tblpnlGeneral_ddlServiceName")));
+		dd.selectByVisibleText("Division# 4 to MCO-F");
+		
+		
+		
+		Thread.sleep(10000);
+		driver.quit();
