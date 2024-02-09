@@ -80,3 +80,93 @@ public class TC_001CreateQuotationBE {
 	}
 
 }
+=====================================================================================================================================================================================================================================================================
+package com.ible.stage.pelham;
+
+import java.time.Duration;
+import java.util.ArrayList;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+
+public class TC_001_AddWarehouseReceipt {
+
+	public static void main(String[] args) throws InterruptedException {
+
+		ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("http://pelhambackend.justfordemo.biz");
+		driver.findElement(By.id("txtusername")).sendKeys("guest");
+		driver.findElement(By.id("txtpassword")).sendKeys("pelham");
+		driver.findElement(By.id("btnlogin")).click();
+		WebElement mainmenu=driver.findElement(By.xpath("//*[@id=\"ctl00_divMenu\"]/ol/li[2]/a"));
+		Actions act=new Actions(driver);
+		act.moveToElement(mainmenu).perform();
+		Thread.sleep(2000);
+		WebElement submenu=driver.findElement(By.xpath("//*[@id=\"warehouse receipt\"]/a"));
+		Actions act2=new Actions(driver);
+		act2.moveToElement(submenu);
+		act2.click().build().perform();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_imgAddAdditonalUsers1")).click();
+		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		driver.switchTo().window(tabs.get(1));
+		Thread.sleep(3000);
+		driver.findElement(By.id("Tabs_tblpnlGeneral_txtReferenceNumBill")).sendKeys("Amazon41");
+		WebElement custid=driver.findElement(By.id("Tabs_tblpnlGeneral_txtCustomerID_I"));
+		custid.click();
+		Thread.sleep(2000);
+		WebElement custname1=driver.findElement(By.xpath("//*[@id=\"Tabs_tblpnlGeneral_txtCustomerID_I\"]"));
+		Actions act3= new Actions(driver);
+		act3.sendKeys("PS-712553-2024");
+		act3.click().perform();
+		Thread.sleep(15000);
+		WebElement custid2=driver.findElement(By.id("Tabs_tblpnlGeneral_txtAdShippId_I"));
+		custid2.click();
+		WebElement custname2=driver.findElement(By.xpath("//*[@id=\"Tabs_tblpnlGeneral_txtAdShippId_I\"]"));
+		Actions act4=new Actions(driver);
+		act4.sendKeys("SHP-1480-2017");
+		act4.click().perform();
+		Thread.sleep(15000);
+		WebElement custid3=driver.findElement(By.id("Tabs_tblpnlGeneral_txtConsigneeId_I"));
+		custid3.click();
+		WebElement custname3=driver.findElement(By.xpath("//*[@id=\"Tabs_tblpnlGeneral_txtConsigneeId_I\"]"));
+		Actions act5=new Actions(driver);
+		act5.sendKeys("CON-2007-2024");
+		act5.click().perform();
+		Thread.sleep(20000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tbPnlReference_tab\"]/span")).click();
+		driver.findElement(By.id("Tabs_tbPnlReference_GdvReference_ctl02_txtTrackNo")).sendKeys("Amazon41");
+		Thread.sleep(3000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tbPnlMeasurement_tab\"]/span")).click();
+		Thread.sleep(3000);
+		Select dd2 = new Select(driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_ddlratetype")));
+		dd2.selectByVisibleText("Hundred Weight");
+		Thread.sleep(20000);
+		driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_txtInotes")).sendKeys("Iphone");
+		Thread.sleep(5000);
+		WebElement packid=driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_ddlPackage_I"));
+		packid.click();
+		WebElement packid2=driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_ddlPackage_I"));
+		Actions act6=new Actions(driver);
+		act6.sendKeys("1-X");
+		act6.click().perform();
+		Thread.sleep(12000);
+		driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_txtGrossWtPerItem")).sendKeys("3");
+		
+		
+		
+	
+		
+		Thread.sleep(10000);
+		driver.quit();
+	}
+
+}
