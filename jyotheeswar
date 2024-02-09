@@ -79,4 +79,37 @@ ChromeOptions co=new  ChromeOptions();
 
 
 //	}
-	
+
+===========================================================================================================================================================================================================================================================================
+
+package com.ible.live.iblesfoft;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+public class TC_001_BE_ConvertWRtoInhouse {
+	public static void main(String[] args) throws InterruptedException {
+		ChromeOptions co=new  ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		WebDriver driver = new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.get("https://manage.boxonlogistics.com/");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtusername")).sendKeys("iblesoft");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_txtpassword")).sendKeys("Boxon@123");
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnlogin")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"aspnetForm\"]/section/div[2]/div[1]/a/b")).click();
+		driver.findElement(By.xpath("//*[@id=\"ctl00_divMenu\"]/ul/li[3]/a/b")).click();
+		driver.findElement(By.xpath("//*[@id=\"warehousereceipt\"]/a")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_gdvBillformInfo_DXSelBtn0_D")).click();
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnInHouseBills")).click();
+		Thread.sleep(8000);
+		driver.findElement(By.id("ctl00_ContentPlaceHolder1_btnYes")).click();
+		Thread.sleep(5000);
+		driver.navigate().refresh();
+		driver.close();
+	}
+}
+
