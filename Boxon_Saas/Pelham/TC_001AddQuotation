@@ -149,7 +149,7 @@ public class TC_001_AddWarehouseReceipt {
 		Thread.sleep(3000);
 		Select dd2 = new Select(driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_ddlratetype")));
 		dd2.selectByVisibleText("Hundred Weight");
-		Thread.sleep(20000);
+		Thread.sleep(25000);
 		driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_txtInotes")).sendKeys("Iphone");
 		Thread.sleep(5000);
 		WebElement packid=driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_ddlPackage_I"));
@@ -158,14 +158,36 @@ public class TC_001_AddWarehouseReceipt {
 		Actions act6=new Actions(driver);
 		act6.sendKeys("1-X");
 		act6.click().perform();
-		Thread.sleep(12000);
-		driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_txtGrossWtPerItem")).sendKeys("3");
-		
-		
-		
-	
-		
 		Thread.sleep(10000);
+		driver.findElement(By.id("Tabs_tbPnlMeasurement_GrdMeasurement_ctl02_txtGrossWtPerItem")).sendKeys("3");
+		Thread.sleep(5000);
+		driver.findElement(By.id("Tabs_tbPnlMeasurement_btnCal")).click();
+		Thread.sleep(15000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tblPnlStorage_tab\"]/span/span")).click();
+		Thread.sleep(2000);
+		Select dd3= new Select(driver.findElement(By.id("Tabs_tblPnlStorage_ddlStorageSer")));
+		dd3.selectByVisibleText("Storage for 30 days");
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tbpnlWareHouse_tab\"]/span")).click();
+		Thread.sleep(2000);
+		Select dd4= new Select(driver.findElement(By.id("Tabs_tbpnlWareHouse_ddlBranchW")));
+		dd4.selectByVisibleText("LOS ANGELES BRANCH");
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tbPnlAddDetails_tab\"]/span")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tbpnlStagingDetails_tab\"]/span")).click();
+		Thread.sleep(2000);
+		Select dd5=new Select(driver.findElement(By.id("Tabs_tbpnlStagingDetails_gdvRoute_ctl02_ddlAddServs")));
+		dd5.selectByVisibleText("Document Fee");
+		Thread.sleep(10000);
+		driver.findElement(By.xpath("//*[@id=\"Tabs_tbPnlAdditionalCost_tab\"]/span")).click();
+		Thread.sleep(10000);
+		Select dd6=new Select(driver.findElement(By.id("Tabs_tbPnlAdditionalCost_grdAddCost_ctl02_ddlAddServs")));
+		dd6.selectByVisibleText("Extra Charges");
+		Thread.sleep(15000);
+		driver.findElement(By.id("btnAdd")).click();
+		driver.navigate().refresh();
+		Thread.sleep(15000);
 		driver.quit();
 	}
 
