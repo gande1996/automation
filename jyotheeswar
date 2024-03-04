@@ -345,6 +345,7 @@ import org.testng.annotations.Test;
 public class TestAdditionaladdress  {
         public static void main(String[] args) throws InterruptedException {
         WebDriver driver;
+            //    (Consignee)
 		ChromeOptions co= new ChromeOptions();
 		co.addArguments("--remote-allow-origins=*");
 		driver =new ChromeDriver(co);
@@ -406,7 +407,13 @@ public class TestAdditionaladdress  {
 		Thread.sleep(3000);
 		WebElement svb=driver.findElement(By.xpath("//*[@id=\"userprofileFormThree\"]/div/div[8]/div/input[1]"));
 		svb.click();
-		
+       
+          //      (shipper)
+		ChromeOptions co= new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		driver =new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.get("https://iblesoft.smarteweb.com/");
 		driver.findElement(By.id("unameTxt")).sendKeys("IBLEC1101");
 		driver.findElement(By.id("passwordTxt")).sendKeys("Iblesoft@123");
 		driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
@@ -463,8 +470,13 @@ public class TestAdditionaladdress  {
 		Thread.sleep(3000);
 		WebElement svbs=driver.findElement(By.xpath("//*[@id=\"userprofileFormThree\"]/div/div[8]/div/input[1]"));
 		svbs.click();
-	
-		
+
+            //    (Thirty party)
+		ChromeOptions co= new ChromeOptions();
+		co.addArguments("--remote-allow-origins=*");
+		driver =new ChromeDriver(co);
+		driver.manage().window().maximize();
+		driver.get("https://iblesoft.smarteweb.com/");
 		driver.findElement(By.id("unameTxt")).sendKeys("IBLEC1101");
 		driver.findElement(By.id("passwordTxt")).sendKeys("Iblesoft@123");
 		driver.findElement(By.xpath("//*[@id=\"registerFormOne\"]/div/div[1]/div/div/div[2]/div[4]/button")).click();
