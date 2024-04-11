@@ -71,7 +71,6 @@ public class TC_001CreateJOB {
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/div[2]/div/div/form/div[13]/input")).click();
 		Thread.sleep(5000);
-		driver.close();
 	}
 
 }
