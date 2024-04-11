@@ -200,7 +200,6 @@ ChromeOptions co = new ChromeOptions();
 		driver.close();
 		driver.switchTo().window(parent1111);
 		driver.navigate().refresh();
-		driver.close();
 
 ============================================================================================================================================================================================================
 Ready to ship cod
