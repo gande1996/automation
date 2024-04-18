@@ -1,0 +1,20 @@
+describe('template spec', () => {
+  it('passes', () => {
+    cy.visit("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+    cy.title().should('eq', 'OrangeHRM')
+    cy.get(':nth-child(2) > .oxd-input-group > :nth-child(2) > .oxd-input').type('Admin')
+    cy.get(':nth-child(3) > .oxd-input-group > :nth-child(2) > .oxd-input').type('admin123')
+    cy.wait(2000)
+    cy.get('.oxd-button').click()
+    cy.wait(5000)
+    cy.get('h6').should('have.text', 'Dashboard')
+    cy.get(':nth-child(1) > .oxd-main-menu-item > .oxd-text').click()
+    cy.wait(2000)
+    cy.get('.oxd-topbar-header-breadcrumb-level').should('have.text', 'User Management')
+    cy.get('.orangehrm-header-container > .oxd-button').click()
+    cy.get('.orangehrm-card-container > .oxd-text--h6').should('have.text','Add User')
+    cy.wait(2000)
+    cy.get(':nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-select-wrapper > .oxd-select-text').should('have.text', 'Admin')
+
+  })
+})
